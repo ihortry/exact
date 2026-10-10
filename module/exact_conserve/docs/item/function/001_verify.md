@@ -6,7 +6,8 @@ Audit a log of postings for conservation: fold each `amount_minor` into its
 own asset's `i128`-widened net total, and report every asset's net — amounts
 of different assets are never added together. Generic over the caller's
 asset key `A : Ord + Clone`: `Ord` to keep the nets in a `BTreeMap`, `Clone`
-to store a key the first time its asset appears. The crate's single most
+to store a key the first time its asset appears. The account type `K` carries
+no bound: `verify` never reads `account`. The crate's single most
 production-critical export.
 
 ## Kind
@@ -15,10 +16,10 @@ Function (§ Item Kind Taxonomy : Stable Item Kinds #4)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:230-243`
+`module/exact_conserve/src/lib.rs:234-247`
 
 ```rust
-pub fn verify< A : Ord + Clone >( entries : &[ Entry< A > ] ) -> Result< Report< A >, ConservationError >
+pub fn verify< K, A : Ord + Clone >( entries : &[ Entry< K, A > ] ) -> Result< Report< A >, ConservationError >
 {
   let mut nets : BTreeMap< A, i128 > = BTreeMap::new();
   for entry in entries
@@ -34,7 +35,7 @@ pub fn verify< A : Ord + Clone >( entries : &[ Entry< A > ] ) -> Result< Report<
 }
 ```
 
-Carries its own doc-test (`src/lib.rs:217-225`), which runs as a real
+Carries its own doc-test (`src/lib.rs:221-229`), which runs as a real
 `cargo test --doc` execution, demonstrating both a balanced log and a
 one-unit leak.
 
@@ -42,8 +43,8 @@ one-unit leak.
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 230-243 | Declaration |
-| `src/lib.rs` | 217-225 | Own doc-test |
+| `src/lib.rs` | 234-247 | Declaration |
+| `src/lib.rs` | 221-229 | Own doc-test |
 | `tests/conservation_test.rs` | throughout | Every test in the file |
 | `exact_arith/src/lib.rs:30` | — | Facade's own module-level doc-test |
 | `exact_arith/tests/facade_test.rs:29` | — | Facade integration test |

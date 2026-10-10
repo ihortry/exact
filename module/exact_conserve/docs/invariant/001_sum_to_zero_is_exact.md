@@ -12,11 +12,11 @@
 A log this crate audits is balanced if and only if every asset's signed sum
 is exactly zero, and a typed slice if and only if its signed sum is — no
 tolerance window, no rounding, no "close enough." `verify`
-(`src/lib.rs:230-243`) accumulates every `Entry::amount_minor` (`i64`) into
+(`src/lib.rs:234-247`) accumulates every `Entry::amount_minor` (`i64`) into
 its own asset's `i128` total via `checked_add`, never adding amounts of
-different assets together; `Report::is_balanced` (`src/lib.rs:172-175`) is
+different assets together; `Report::is_balanced` (`src/lib.rs:176-179`) is
 then bare equality of every total with zero.
-`money_sum_assert_zero` (`src/lib.rs:273-288`) runs the identical
+`money_sum_assert_zero` (`src/lib.rs:277-292`) runs the identical
 accumulate-then-compare shape over a typed `&[Money]` slice instead of `&[Entry]`, and apply the same
 `== 0` equality with the same no-tolerance rule. The accumulator is strictly
 wider than any single posting (`i128` against `i64`), and the fold is
@@ -42,9 +42,9 @@ genuinely exceed what even `i128` can hold.
 
 | File | Relationship |
 |------|--------------|
-| `src/lib.rs:230-243` | `verify` — the plain-log fold, `checked_add` into an `i128` accumulator |
-| `src/lib.rs:172-175` | `Report::is_balanced` — bare equality with zero, no tolerance |
-| `src/lib.rs:273-288` | `money_sum_assert_zero` — the typed-slice equivalent |
+| `src/lib.rs:234-247` | `verify` — the plain-log fold, `checked_add` into an `i128` accumulator |
+| `src/lib.rs:176-179` | `Report::is_balanced` — bare equality with zero, no tolerance |
+| `src/lib.rs:277-292` | `money_sum_assert_zero` — the typed-slice equivalent |
 | `../algorithm/001_conservation_verification_fold.md` | The fold's full procedure, including why `i128` and not a declared maximum log length |
 
 ### Tests

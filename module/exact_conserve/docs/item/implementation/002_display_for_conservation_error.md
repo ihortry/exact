@@ -13,7 +13,7 @@ Implementation (§ Item Kind Taxonomy : Stable Item Kinds #12)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:131-141`
+`module/exact_conserve/src/lib.rs:135-145`
 
 ```rust
 impl core::fmt::Display for ConservationError
@@ -33,7 +33,7 @@ impl core::fmt::Display for ConservationError
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 131-141 | Declaration |
+| `src/lib.rs` | 135-145 | Declaration |
 
 ## Crate Usage
 

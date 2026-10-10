@@ -29,7 +29,7 @@ pub type Money = Decimal< MONEY_SCALE >;
 | `tests/price_test.rs` | 6,13,21,45 | `Price`'s range checked against `Money`'s |
 | `exact_parse/src/lib.rs:45,52,54` | — | Compile-time `ONE_MINOR` assert; `money_from_str`'s parameter/return/body |
 | `exact_bytes/src/lib.rs:197,209,212` | — | `money_to_wire`/`money_from_wire` signatures and bodies |
-| `exact_conserve/src/lib.rs:251,273` | — | `money_conserve_into`/`money_sum_assert_zero` signatures |
+| `exact_conserve/src/lib.rs:255,277` | — | `money_conserve_into`/`money_sum_assert_zero` signatures |
 | `exact_dust/src/lib.rs:207,209,218,220,231` | — | `money_dust_split`/`money_dust_split_into`/`money_dust_remainder` |
 | `exact_add/src/lib.rs:53,63,113,128` | — | `money_add`/`money_sub`/`money_checked_neg`/`money_saturating_add` |
 | `exact_fmt/src/lib.rs`, `exact_cmp/src/lib.rs` | — | Imported (`use exact_kind::{ Money, .. }`); re-exported `Display`/derived `Ord` exercised through it |

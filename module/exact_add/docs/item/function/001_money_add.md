@@ -26,7 +26,7 @@ pub const fn money_add( a : Money, b : Money ) -> Result< Money, KindError >
 |------|---------|---------|
 | `src/lib.rs` | 53 | Declaration |
 | `tests/checked_and_saturating_add_test.rs:18,71` | — | Dispatch parity with `Money::checked_add`; cross-check against `money_saturating_add` in range |
-| `exact_conserve/src/lib.rs:253` | — | `money_conserve_into`'s own body |
+| `exact_conserve/src/lib.rs:257` | — | `money_conserve_into`'s own body |
 | `exact_arith/src/lib.rs:92` | — | Facade re-export |
 
 ## Crate Usage
@@ -39,7 +39,7 @@ pub const fn money_add( a : Money, b : Money ) -> Result< Money, KindError >
 
 ## Caller Tree
 
-- **External:** `exact_conserve::money_conserve_into` (`exact_conserve/src/lib.rs:253`)
+- **External:** `exact_conserve::money_conserve_into` (`exact_conserve/src/lib.rs:257`)
 
 No intra-crate caller — `money_add` is a standalone dispatcher, not called by any other function in `exact_add`.
 

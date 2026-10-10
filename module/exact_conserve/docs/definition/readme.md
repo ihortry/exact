@@ -11,19 +11,19 @@
 
 | Item | Kind | Declared | Documented in |
 |------|------|----------|----------------|
-| `Entry` | struct | `src/lib.rs:95` | [Entry And Report](../type/001_entry_and_report.md) |
-| `Entry::new` | fn | `src/lib.rs:111` | [Entry And Report](../type/001_entry_and_report.md) |
-| `ConservationError` | enum | `src/lib.rs:119` | [Entry And Report](../type/001_entry_and_report.md) |
-| `ConservationError`'s `Display` impl | trait impl | `src/lib.rs:131` | [Entry And Report](../type/001_entry_and_report.md) |
-| `Report` | struct | `src/lib.rs:152` | [Entry And Report](../type/001_entry_and_report.md) |
-| `Report::is_balanced` | fn | `src/lib.rs:172` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
-| `Report::discrepancy_minor` | fn | `src/lib.rs:184` | [Entry And Report](../type/001_entry_and_report.md) |
-| `Report`'s `Display` impl | trait impl | `src/lib.rs:193` | [Entry And Report](../type/001_entry_and_report.md) |
-| `verify` | fn | `src/lib.rs:230` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
-| `money_conserve_into` | fn | `src/lib.rs:251` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
-| `qty_conserve_into` | fn | `src/lib.rs:262` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
-| `money_sum_assert_zero` | fn | `src/lib.rs:273` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
+| `Entry` | struct | `src/lib.rs:99` | [Entry And Report](../type/001_entry_and_report.md) |
+| `Entry::new` | fn | `src/lib.rs:115` | [Entry And Report](../type/001_entry_and_report.md) |
+| `ConservationError` | enum | `src/lib.rs:123` | [Entry And Report](../type/001_entry_and_report.md) |
+| `ConservationError`'s `Display` impl | trait impl | `src/lib.rs:135` | [Entry And Report](../type/001_entry_and_report.md) |
+| `Report` | struct | `src/lib.rs:156` | [Entry And Report](../type/001_entry_and_report.md) |
+| `Report::is_balanced` | fn | `src/lib.rs:176` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
+| `Report::discrepancy_minor` | fn | `src/lib.rs:188` | [Entry And Report](../type/001_entry_and_report.md) |
+| `Report`'s `Display` impl | trait impl | `src/lib.rs:197` | [Entry And Report](../type/001_entry_and_report.md) |
+| `verify` | fn | `src/lib.rs:234` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
+| `money_conserve_into` | fn | `src/lib.rs:255` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
+| `qty_conserve_into` | fn | `src/lib.rs:266` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
+| `money_sum_assert_zero` | fn | `src/lib.rs:277` | [Conservation Verification Fold](../algorithm/001_conservation_verification_fold.md) |
 
-`impl core::error::Error for ConservationError {}` (`src/lib.rs:143`) carries no associated item of its own, so it gets no row here — same treatment as every other marker trait impl in this family's `definition/` indexes.
+`impl core::error::Error for ConservationError {}` (`src/lib.rs:147`) carries no associated item of its own, so it gets no row here — same treatment as every other marker trait impl in this family's `definition/` indexes.
 
 No numbered instance file in this directory — this index is the whole of `definition/` for this crate.

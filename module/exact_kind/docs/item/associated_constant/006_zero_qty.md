@@ -23,7 +23,7 @@ pub const ZERO : Self = Self { value : Decimal::ZERO };
 |------|---------|---------|
 | `src/lib.rs` | 428 | Declaration |
 | `tests/non_negative_test.rs` | throughout | Accumulator seed, boundary comparisons |
-| `exact_conserve/tests/conservation_test.rs:238` | — | `try_fold` seed |
+| `exact_conserve/tests/conservation_test.rs:251` | — | `try_fold` seed |
 | `exact_snap/tests/snap_test.rs:13,14,131` | — | `Tick`/`Lot` zero-rejection and zero-result checks |
 | `exact_arith/tests/facade_test.rs:33` | — | Remainder-check comparison |
 | `exact_arith/tests/no_alloc_test.rs:69` | — | Array-fill seed `[ Quantity::ZERO; 4 ]` |

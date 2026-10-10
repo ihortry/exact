@@ -2,8 +2,9 @@
 
 ## Representation
 
-Build a posting from any `Into<String>` account label, an asset of the
-caller's own key type `A`, and a signed minor-unit amount.
+Build a posting from an account of the caller's own type `K`, an asset of
+the caller's own key type `A`, and a signed minor-unit amount. Takes `K` by
+value rather than `impl Into< K >`, so `Entry::new( "a", … )` still infers `K`.
 
 ## Kind
 
@@ -11,12 +12,12 @@ Associated Function/Method (§ Item Kind Taxonomy : Associated Item Kinds #1)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:110-114`
+`module/exact_conserve/src/lib.rs:115-118`
 
 ```rust
-pub fn new( account : impl Into< String >, asset : A, amount_minor : i64 ) -> Self
+pub fn new( account : K, asset : A, amount_minor : i64 ) -> Self
 {
-  Self { account : account.into(), asset, amount_minor }
+  Self { account, asset, amount_minor }
 }
 ```
 
@@ -24,9 +25,9 @@ pub fn new( account : impl Into< String >, asset : A, amount_minor : i64 ) -> Se
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 111-114 | Declaration |
-| `src/lib.rs` | 220,223 | `verify`'s own doc-test |
-| `tests/conservation_test.rs` | 20,52,58,67,82,91,105,120-123,138-141,166-169,180,195-198 | `transfer` helper, the single- and multi-asset logs, and a log keyed by an enum |
+| `src/lib.rs` | 115-118 | Declaration |
+| `src/lib.rs` | 224,227 | `verify`'s own doc-test |
+| `tests/conservation_test.rs` | 20,52,58,67,82,91,105,120-123,138-141,166-169,180,195-198,215 | `transfer` helper, the single- and multi-asset logs, a log keyed by an enum, and an account of a type with no traits |
 | `exchange_core/src/lib.rs:460-461` | — | **Production** |
 | `cluster_economy/src/market.rs:504-505,515-516` | — | **Production** |
 | `cluster_economy/tests/economy_test.rs:255-261` | — | Reconciliation assertion setup |
@@ -54,4 +55,4 @@ counting the demo lane or either crate's own tests.
 
 ## Callee Tree
 
-- **External:** `Into::into` (the generic `account` parameter's conversion into `String`)
+No callee — moves its three arguments into the struct as given.

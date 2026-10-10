@@ -11,7 +11,7 @@ Associated Function/Method (§ Item Kind Taxonomy : Associated Item Kinds #1)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:133-140`
+`module/exact_conserve/src/lib.rs:137-144`
 
 ```rust
 fn fmt( &self, f : &mut core::fmt::Formatter< '_ > ) -> core::fmt::Result
@@ -28,7 +28,7 @@ fn fmt( &self, f : &mut core::fmt::Formatter< '_ > ) -> core::fmt::Result
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 133-140 | Declaration |
+| `src/lib.rs` | 137-144 | Declaration |
 | `exact_arith/tests/facade_test.rs:61` | — | Asserts the exact `Overflow` rendered text |
 
 **An exception to the pattern elsewhere in this family**: every other error

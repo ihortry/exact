@@ -15,7 +15,7 @@ use exact_kind::{ Money, Quantity };
 const CASH : &str = "cash";
 
 /// A transfer of cash, as the two postings it really is.
-fn transfer( from : &str, to : &str, amount_minor : i64 ) -> Vec< Entry< &'static str > >
+fn transfer< 'a >( from : &'a str, to : &'a str, amount_minor : i64 ) -> Vec< Entry< &'a str, &'static str > >
 {
   vec![ Entry::new( from, CASH, -amount_minor ), Entry::new( to, CASH, amount_minor ) ]
 }
@@ -39,7 +39,7 @@ fn a_log_of_matched_postings_balances()
 #[ test ]
 fn an_empty_log_balances_at_zero_entries()
 {
-  let report = verify::< &str >( &[] ).unwrap();
+  let report = verify::< (), &str >( &[] ).unwrap();
 
   assert!( report.is_balanced() );
   assert_eq!( report.entries, 0 );
@@ -63,7 +63,7 @@ fn a_single_minor_unit_of_leakage_is_detected_and_named()
 #[ test ]
 fn one_unit_stays_visible_against_a_million_units_of_turnover()
 {
-  let mut log : Vec< Entry< &str > > = ( 0..1_000 ).flat_map( | i | transfer( "a", "b", i64::from( i ) * 1_000 ) ).collect();
+  let mut log : Vec< Entry< &str, &str > > = ( 0..1_000 ).flat_map( | i | transfer( "a", "b", i64::from( i ) * 1_000 ) ).collect();
   log.push( Entry::new( "leak", CASH, -1 ) );
 
   let report = verify( &log ).unwrap();
@@ -76,7 +76,7 @@ fn one_unit_stays_visible_against_a_million_units_of_turnover()
 #[ test ]
 fn the_report_renders_both_outcomes_in_words()
 {
-  assert_eq!( verify::< &str >( &[] ).unwrap().to_string(), "balanced: entries 0, net 0" );
+  assert_eq!( verify::< (), &str >( &[] ).unwrap().to_string(), "balanced: entries 0, net 0" );
   assert_eq!
   (
     verify( &[ Entry::new( "x", CASH, -1 ) ] ).unwrap().to_string(),
@@ -88,7 +88,7 @@ fn the_report_renders_both_outcomes_in_words()
 #[ test ]
 fn the_accumulator_holds_a_total_the_posting_type_could_not()
 {
-  let log : Vec< Entry< &str > > = ( 0..4 ).map( | _ | Entry::new( "x", CASH, i64::MAX ) ).collect();
+  let log : Vec< Entry< &str, &str > > = ( 0..4 ).map( | _ | Entry::new( "x", CASH, i64::MAX ) ).collect();
 
   let total = verify( &log ).unwrap().discrepancy_minor( CASH ).unwrap();
 
@@ -100,7 +100,7 @@ fn the_accumulator_holds_a_total_the_posting_type_could_not()
 #[ test ]
 fn a_log_can_be_built_from_nothing_but_integers()
 {
-  let log : Vec< Entry< &str > > = [ ( "a", -5_i64 ), ( "b", 5_i64 ) ]
+  let log : Vec< Entry< &str, &str > > = [ ( "a", -5_i64 ), ( "b", 5_i64 ) ]
   .into_iter()
   .map( | ( account, amount ) | Entry::new( account, CASH, amount ) )
   .collect();
@@ -201,6 +201,19 @@ fn a_log_can_be_keyed_by_the_callers_own_asset_type()
   assert!( !report.is_balanced() );
   assert_eq!( report.discrepancy_minor( &Asset::Cash ), Some( 1 ) );
   assert_eq!( report.discrepancy_minor( &Asset::Btc ), Some( 0 ) );
+}
+
+/// An account key the auditor must accept without asking anything of it: no
+/// `Clone`, no `Ord`, no `Debug`, no conversion to a string.
+struct Opaque;
+
+/// The account is the caller's own type, and `verify` asks nothing of it — an
+/// account key with no traits at all still audits.
+#[ test ]
+fn an_account_of_any_type_audits()
+{
+  let log = [ Entry::new( Opaque, CASH, 5 ), Entry::new( Opaque, CASH, -5 ) ];
+  assert!( verify( &log ).unwrap().is_balanced() );
 }
 
 /// `ConservationError::Overflow` carries no position — it names the

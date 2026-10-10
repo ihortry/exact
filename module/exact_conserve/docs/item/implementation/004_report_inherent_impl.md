@@ -15,7 +15,7 @@ Implementation (§ Item Kind Taxonomy : Stable Item Kinds #12)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:162-191`
+`module/exact_conserve/src/lib.rs:166-195`
 
 ```rust
 impl< A > Report< A >
@@ -39,7 +39,7 @@ impl< A > Report< A >
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 162-191 | Declaration |
+| `src/lib.rs` | 166-195 | Declaration |
 
 ## Crate Usage
 

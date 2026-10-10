@@ -96,7 +96,7 @@ pub fn float_tenths() -> f64
 /// every call in this lane passes `0` or `1`, so the panic is reachable only
 /// by a future caller supplying an unrealistic leak, never by `run` itself.
 #[ must_use ]
-pub fn ledger( amount : Money, leak_minor : i64 ) -> Vec< Entry< &'static str > >
+pub fn ledger( amount : Money, leak_minor : i64 ) -> Vec< Entry< &'static str, &'static str > >
 {
   // Fix(smoke_exact_arithmetic_ledger_leak_minor_subtraction_overflow): the
   // "seller" posting computed `amount.minor() - leak_minor` with a bare `-`

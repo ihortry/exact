@@ -24,7 +24,7 @@ use std::borrow::Borrow;
 | File | Line(s) | Context |
 |------|---------|---------|
 | `src/lib.rs` | 85 | Declaration |
-| `src/lib.rs` | 186 | `discrepancy_minor`'s `A : Borrow< Q >` bound |
+| `src/lib.rs` | 190 | `discrepancy_minor`'s `A : Borrow< Q >` bound |
 
 ## Crate Usage
 

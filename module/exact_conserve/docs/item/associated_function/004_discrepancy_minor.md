@@ -7,7 +7,7 @@ balances, and `None` when the log never moved it, so a misspelt asset cannot
 read as balanced. The asset is looked up by any `Q` the key type `A` borrows
 as — `&str` for `String` or `&str` keys, the key itself for an enum. Signed
 deliberately: the sign distinguishes value appearing from value vanishing,
-which the doc comment calls "different investigations" (`src/lib.rs:181-182`).
+which the doc comment calls "different investigations" (`src/lib.rs:185-186`).
 
 ## Kind
 
@@ -15,7 +15,7 @@ Associated Function/Method (§ Item Kind Taxonomy : Associated Item Kinds #1)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:184-190`
+`module/exact_conserve/src/lib.rs:188-194`
 
 ```rust
 pub fn discrepancy_minor< Q >( &self, asset : &Q ) -> Option< i128 >
@@ -31,8 +31,8 @@ where
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 184-190 | Declaration |
-| `src/lib.rs` | 224 | `verify`'s own doc-test |
+| `src/lib.rs` | 188-194 | Declaration |
+| `src/lib.rs` | 228 | `verify`'s own doc-test |
 | `tests/conservation_test.rs:34,56,59,72,93,128-129,156,181-182,202-203` | — | Asserts the exact signed leftover per asset — one cash leak and a cash-and-`BTC` pair that cancel only as a whole — `None` for an asset never moved or misspelt, and a log keyed by an enum |
 | `exchange_core/tests/submission_test.rs:259` | — | Integration test |
 | `smoke_exact_market_split/src/lib.rs:319`, `tests/lane_test.rs:68` | — | Demo-lane leak-magnitude assertion |

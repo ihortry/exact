@@ -14,7 +14,7 @@ Struct (§ Item Kind Taxonomy : Stable Item Kinds #6)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:151-160`
+`module/exact_conserve/src/lib.rs:155-164`
 
 ```rust
 #[ derive( Debug, Clone, PartialEq, Eq ) ]
@@ -29,8 +29,8 @@ pub struct Report< A >
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 152-160 | Declaration |
-| `src/lib.rs` | 242 | Constructed by `verify` as its return value |
+| `src/lib.rs` | 156-164 | Declaration |
+| `src/lib.rs` | 246 | Constructed by `verify` as its return value |
 | `tests/conservation_test.rs` | throughout | Every test inspects a `Report` returned by `verify` |
 | `exact_arith/src/lib.rs:141` | — | Facade re-export |
 

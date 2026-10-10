@@ -48,10 +48,10 @@ The check here is a single whole-log (or whole-slice) sum compared to zero — i
 | File | Relationship |
 |------|--------------|
 | `src/lib.rs:11-36` | The module doc's "What conservation means here" and "Widths" sections — the `i64`/`i128` framing and the per-account-totals rationale, verbatim source for the two "Why" sections above |
-| `src/lib.rs:230-243` | `verify`'s implementation (steps 1-4) |
-| `src/lib.rs:172-175` | `Report::is_balanced` — step 5 |
-| `src/lib.rs:251-265` | `money_conserve_into`/`qty_conserve_into` — the typed layer's single-step fold, delegated to `exact_add` |
-| `src/lib.rs:273-288` | `money_sum_assert_zero` — the typed layer's accumulate-then-compare check |
+| `src/lib.rs:234-247` | `verify`'s implementation (steps 1-4) |
+| `src/lib.rs:176-179` | `Report::is_balanced` — step 5 |
+| `src/lib.rs:255-269` | `money_conserve_into`/`qty_conserve_into` — the typed layer's single-step fold, delegated to `exact_add` |
+| `src/lib.rs:277-292` | `money_sum_assert_zero` — the typed layer's accumulate-then-compare check |
 
 ### Tests
 

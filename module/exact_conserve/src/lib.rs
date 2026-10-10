@@ -91,12 +91,16 @@ use std::borrow::Borrow;
 /// log's producer and consumer have agreed on; [`verify`] never interprets the
 /// scale, because conservation is a property of the integers and holds at
 /// every scale.
+///
+/// Both keys are the caller's own types. [`verify`] reads only `asset`, so the
+/// account type carries no bound at all: an id, a name, or a reference into
+/// the caller's own records.
 #[ derive( Debug, Clone, PartialEq, Eq ) ]
-pub struct Entry< A >
+pub struct Entry< K, A >
 {
   /// The account the posting is against. Carried for reporting, never for
   /// arithmetic — see the module docs on why balances are not totalled.
-  pub account : String,
+  pub account : K,
   /// What moved — a currency or an instrument. [`verify`] nets each asset
   /// separately: amounts of different assets are never added together.
   pub asset : A,
@@ -104,13 +108,13 @@ pub struct Entry< A >
   pub amount_minor : i64,
 }
 
-impl< A > Entry< A >
+impl< K, A > Entry< K, A >
 {
   /// Build a posting.
   #[ must_use ]
-  pub fn new( account : impl Into< String >, asset : A, amount_minor : i64 ) -> Self
+  pub fn new( account : K, asset : A, amount_minor : i64 ) -> Self
   {
-    Self { account : account.into(), asset, amount_minor }
+    Self { account, asset, amount_minor }
   }
 }
 
@@ -227,7 +231,7 @@ impl< A : core::fmt::Display > core::fmt::Display for Report< A >
 /// # Errors
 ///
 /// [`ConservationError::Overflow`] if an asset's running total leaves `i128`.
-pub fn verify< A : Ord + Clone >( entries : &[ Entry< A > ] ) -> Result< Report< A >, ConservationError >
+pub fn verify< K, A : Ord + Clone >( entries : &[ Entry< K, A > ] ) -> Result< Report< A >, ConservationError >
 {
   let mut nets : BTreeMap< A, i128 > = BTreeMap::new();
   for entry in entries

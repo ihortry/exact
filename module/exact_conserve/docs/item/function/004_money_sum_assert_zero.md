@@ -12,7 +12,7 @@ Function (§ Item Kind Taxonomy : Stable Item Kinds #4)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:273-288`
+`module/exact_conserve/src/lib.rs:277-292`
 
 ```rust
 pub fn money_sum_assert_zero( legs : &[ Money ] ) -> Result< (), ConservationError >
@@ -37,8 +37,8 @@ pub fn money_sum_assert_zero( legs : &[ Money ] ) -> Result< (), ConservationErr
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 273-288 | Declaration |
-| `tests/conservation_test.rs:244-259` | — | A cancelling slice, a one-unit leak, and an empty slice |
+| `src/lib.rs` | 277-292 | Declaration |
+| `tests/conservation_test.rs:257-272` | — | A cancelling slice, a one-unit leak, and an empty slice |
 | `exact_arith/src/lib.rs:141` | — | Facade re-export |
 
 Confirmed via a full-workspace grep: no call site anywhere outside this

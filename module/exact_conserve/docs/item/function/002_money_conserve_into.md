@@ -11,7 +11,7 @@ Function (§ Item Kind Taxonomy : Stable Item Kinds #4)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:251-254`
+`module/exact_conserve/src/lib.rs:255-258`
 
 ```rust
 pub fn money_conserve_into( acc : Money, leg : Money ) -> Result< Money, ConservationError >
@@ -24,9 +24,9 @@ pub fn money_conserve_into( acc : Money, leg : Money ) -> Result< Money, Conserv
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 251-254 | Declaration |
-| `tests/conservation_test.rs:218-231` | — | `try_fold` usage and an overflow case |
-| `tests/conservation_test.rs:283` | — | Credits and debits folding back to exactly zero |
+| `src/lib.rs` | 255-258 | Declaration |
+| `tests/conservation_test.rs:231-244` | — | `try_fold` usage and an overflow case |
+| `tests/conservation_test.rs:296` | — | Credits and debits folding back to exactly zero |
 | `exact_arith/src/lib.rs:141` | — | Facade re-export |
 
 Confirmed via a full-workspace grep: no call site anywhere outside this
@@ -49,4 +49,4 @@ No caller anywhere, intra-crate or external — an honest empty tree.
 ## Callee Tree
 
 - **External:** `exact_add::money_add` (`exact_add/src/lib.rs:53`)
-- `kind_error_to_conservation_error` (`src/lib.rs:145`, private — no Item Instance of its own)
+- `kind_error_to_conservation_error` (`src/lib.rs:149`, private — no Item Instance of its own)

@@ -14,7 +14,7 @@ Implementation (§ Item Kind Taxonomy : Stable Item Kinds #12)
 
 ## Definition
 
-`module/exact_conserve/src/lib.rs:193-213`
+`module/exact_conserve/src/lib.rs:197-217`
 
 ```rust
 impl< A : core::fmt::Display > core::fmt::Display for Report< A >
@@ -44,7 +44,7 @@ impl< A : core::fmt::Display > core::fmt::Display for Report< A >
 
 | File | Line(s) | Context |
 |------|---------|---------|
-| `src/lib.rs` | 193-213 | Declaration |
+| `src/lib.rs` | 197-217 | Declaration |
 | `tests/conservation_test.rs:76-85` | — | `the_report_renders_both_outcomes_in_words` — asserts both branches' exact text |
 | `tests/conservation_test.rs:147,172` | — | A balanced two-asset log, and two unbalanced assets named in asset order with a balanced one left out |
 

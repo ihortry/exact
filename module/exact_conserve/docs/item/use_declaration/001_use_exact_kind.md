@@ -26,9 +26,9 @@ use exact_kind::{ KindError, Money, Quantity };
 | File | Line(s) | Context |
 |------|---------|---------|
 | `src/lib.rs` | 83 | Declaration |
-| `src/lib.rs` | 145 | `KindError` — private error-mapping function's parameter |
-| `src/lib.rs` | 251, 262 | `Money`/`Quantity` — `money_conserve_into`/`qty_conserve_into` parameter types |
-| `src/lib.rs` | 273 | `Money` — `money_sum_assert_zero`'s slice element type |
+| `src/lib.rs` | 149 | `KindError` — private error-mapping function's parameter |
+| `src/lib.rs` | 255, 266 | `Money`/`Quantity` — `money_conserve_into`/`qty_conserve_into` parameter types |
+| `src/lib.rs` | 277 | `Money` — `money_sum_assert_zero`'s slice element type |
 
 ## Crate Usage
 
